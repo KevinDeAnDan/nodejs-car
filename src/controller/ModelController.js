@@ -1,7 +1,7 @@
 
 
 class ModelController {
-
+    
     index(req, res) {
         res.send('<h1>Models</h1>')
     }
