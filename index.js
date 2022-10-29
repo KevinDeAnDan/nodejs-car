@@ -2,10 +2,8 @@ const express = require('express')
 const morgan = require('morgan')
 const app = express()
 const port = 9000
-
-
-const route = require('./src/routes')
-
+const productRoute = require("./src/routes/product");
+const bodyParser = require('body-parser');
 const db = require('./src/config/db')
 app.use(function (req, res, next) {
 
@@ -25,12 +23,14 @@ app.use(function (req, res, next) {
   // Pass to next layer of middleware
   next();
 });
-route(app);
+
 db.connect();
-
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(morgan('combined'))
+app.use(express.json());
 
-
+app.use("/product", productRoute);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
