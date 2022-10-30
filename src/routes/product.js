@@ -6,8 +6,12 @@ const router = require("express").Router();
 router.get("/", productController.getAllProduct);
 
 router.post("/create", productController.createEachProduct);
+// router.get("/edit/:id", productController.getEachProduct);
 
-router.get("/:slug", productController.getEachProduct);
+// router.put("/edit/:id", productController. editEachProduct);
+router.delete("/:id", productController.deleteEachProduct);
+router.get("/:slug", productController.getEachProduct); 
+
 
 
 

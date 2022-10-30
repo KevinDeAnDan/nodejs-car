@@ -31,6 +31,31 @@ const productController = {
         }
         
     },
+    // getEachProduct: async (req, res) => {
+    //     try {
+    //         const product = await Product.findById(req.params.id);
+    //         res.status(200).json(product);
+    //     } catch (err) {
+    //         res.status(500).json(err);
+    //     }
+        
+    // },
+    // editEachProduct: async (req, res) => {
+    //     try {
+    //         res.status(200).json(req.body);
+    //     } catch (err) {
+    //         res.status(500).json(err);
+    //     }
+    // },
+    deleteEachProduct:  async (req, res) => {
+        try {
+          const product = await Product.deleteOne({_id: req.params.id});
+          res.status(200).json(product);
+          console.log(req.params.id);
+        } catch (err) {
+          res.status(500).json(err);
+        }
+    }
 }
 
 module.exports = productController;

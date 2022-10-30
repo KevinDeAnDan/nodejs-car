@@ -1,5 +1,6 @@
 const express = require('express')
 const morgan = require('morgan')
+const methodOverride = require('method-override')
 const app = express()
 const port = 9000
 const productRoute = require("./src/routes/product");
@@ -25,10 +26,12 @@ app.use(function (req, res, next) {
 });
 
 db.connect();
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(morgan('combined'))
 app.use(express.json());
+app.use(methodOverride('_method'))
 
 app.use("/product", productRoute);
 
