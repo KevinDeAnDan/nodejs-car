@@ -7,7 +7,7 @@ const productRoute = require("./src/routes/product");
 const bodyParser = require('body-parser');
 const db = require('./src/config/db')
 app.use(function (req, res, next) {
-
+  // res.write('BÀI LAB ĐÃ HOÀN THÀNH')
   // Website you wish to allow to connect
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 
@@ -34,6 +34,8 @@ app.use(express.json());
 app.use(methodOverride('_method'))
 
 app.use("/product", productRoute);
+
+app.get('/', (req, res) => res.send('BÀI LAB ĐÃ HOÀN THÀNH'))
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
