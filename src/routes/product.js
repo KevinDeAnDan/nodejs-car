@@ -3,7 +3,13 @@ const router = require("express").Router();
 
 
 //Get all product
-router.get("/", productController.getAllProduct);
+// router.get("/", productController.getAllProduct);
+router.get("/", async (req, res, next) => {
+    return res.status(200).json({
+      title: "Express Testing",
+      message: "The app is working properly!",
+    });
+  });
 
 router.post("/create", productController.createEachProduct);
 // router.get("/edit/:id", productController.getEachProduct);
