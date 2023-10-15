@@ -4,7 +4,7 @@ const handlebars = require('express-handlebars');
 const path = require('path')
 const methodOverride = require('method-override')
 const app = express()
-const port = 80
+const port = 9000
 const productRoute = require("./src/routes/product");
 const bodyParser = require('body-parser');
 const db = require('./src/config/db')
@@ -12,7 +12,7 @@ const db = require('./src/config/db')
 app.use(function (req, res, next) {
   // res.write('BÀI LAB ĐÃ HOÀN THÀNH')
   // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
 
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
