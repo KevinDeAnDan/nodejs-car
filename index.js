@@ -1,10 +1,11 @@
 const express = require('express')
 const morgan = require('morgan')
+const dotenv = require('dotenv').config();
 const handlebars = require('express-handlebars');
 const path = require('path')
 const methodOverride = require('method-override')
 const app = express()
-const port = 9000
+
 const productRoute = require("./src/routes/product");
 const bodyParser = require('body-parser');
 const db = require('./src/config/db')
@@ -41,7 +42,7 @@ app.use(methodOverride('_method'))
 app.use("/product", productRoute);
 
 app.get('/', (req, res) =>  res.render('home'))
-
+const port = process.env.PORT
 app.listen(port, () => {
-  console.log(`Example app listening on port: ${port}`)
+  console.log('Example app listening on port ' + port)
 })
