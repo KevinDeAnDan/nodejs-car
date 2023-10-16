@@ -39,7 +39,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(morgan('combined'))
 app.use(express.json());
 app.use(methodOverride('_method'))
-app.use("/product", productRoute);
+app.use("/comments", productRoute);
 
 app.get('/', (req, res) =>  res.render('home'))
 const port = process.env.PORT
