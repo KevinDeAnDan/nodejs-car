@@ -5,11 +5,11 @@ mongoose.plugin(slug);
 
 const productSchema = new Schema({
     name: { type: String},
-    description: { type: String},
-    image: { type: String},
-    price: { type: String},
-    videoID: {type: String},
-    slug: { type: String, slug: 'name', unique: true },
+    email: { type: String},
+    movie_id: { type: String},
+    text: { type: String},
+    date: {type: Date},
+    // slug: { type: String, slug: 'name', unique: true },
 
 }, {
     timestamps: true,
