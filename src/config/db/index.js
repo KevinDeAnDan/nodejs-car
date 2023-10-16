@@ -6,7 +6,7 @@ async function connect() {
         console.log('Connect successfully!!!');
     }
     catch (error) {
-        console.log('Connect fail!!!' + process.env.MONGODB_URL);
+        console.log('Connect fail!!!');
     }
 }
 

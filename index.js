@@ -7,6 +7,7 @@ const methodOverride = require('method-override')
 const app = express()
 
 const productRoute = require("./src/routes/product");
+const fishRoute = require("./src/routes/fish");
 const bodyParser = require('body-parser');
 const db = require('./src/config/db')
 
@@ -39,7 +40,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(morgan('combined'))
 app.use(express.json());
 app.use(methodOverride('_method'))
-app.use("/comments", productRoute);
+app.use("/product", productRoute);
+app.use("/fish", fishRoute);
 
 app.get('/', (req, res) =>  res.render('home'))
 const port = process.env.PORT
