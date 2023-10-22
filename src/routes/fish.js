@@ -8,8 +8,8 @@ router.get("/", fishController.getAllFish);
 router.post("/create", fishController.createEachFish);
 router.get("/update/:slug", fishController.getEachFish);
 
-router.put("/update/:slug", fishController.editEachFish);
-router.delete("/:slug", fishController.deleteEachFish);
+// router.put("/update/:slug", fishController.editEachFish);
+router.delete("/:id", fishController.deleteEachFish);
 router.get("/:slug", fishController.getEachFish); 
 
 
