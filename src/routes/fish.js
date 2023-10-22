@@ -6,10 +6,10 @@ const router = require("express").Router();
 router.get("/", fishController.getAllFish);
 
 router.post("/create", fishController.createEachFish);
-// router.get("/edit/:id", productController.getEachProduct);
+router.get("/update/:slug", fishController.getEachFish);
 
-// router.put("/edit/:id", productController. editEachProduct);
-router.delete("/:id", fishController.deleteEachFish);
+router.put("/update/:slug", fishController.editEachFish);
+router.delete("/:slug", fishController.deleteEachFish);
 router.get("/:slug", fishController.getEachFish); 
 
 

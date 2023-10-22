@@ -41,13 +41,16 @@ const fishController = {
     //     }
         
     // },
-    // editEachProduct: async (req, res) => {
-    //     try {
-    //         res.status(200).json(req.body);
-    //     } catch (err) {
-    //         res.status(500).json(err);
-    //     }
-    // },
+    editEachProduct: async (req, res) => {
+        try {
+            const productId = req.params.slug;
+            const productToUpdate = await Fish.findById(productId)
+            await productToUpdate.save();
+            res.status(200).json(req.body);
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    },
     deleteEachFish:  async (req, res) => {
         try {
           const product = await Fish.deleteOne({_id: req.params.id});

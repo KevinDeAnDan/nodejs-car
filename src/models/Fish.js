@@ -8,8 +8,8 @@ const productSchema = new Schema(
   {
     name: { type: String },
     description: { type: String },
-    src: { type: String },
     price: [{ type: String }],
+    src: { type: String },
     weight: [{ type: String }],
     slug: { type: String, slug: "name", unique: true },
   },
