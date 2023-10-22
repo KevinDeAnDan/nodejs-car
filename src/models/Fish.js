@@ -3,17 +3,14 @@ const Schema = mongoose.Schema;
 const slug = require("mongoose-slug-generator");
 mongoose.plugin(slug);
 
-const priceSchema = new Schema({
-  weight: String, // Ví dụ: "500g", "1kg"
-  price: Number, // Giá cho khối lượng tương ứng
-});
 
 const productSchema = new Schema(
   {
     name: { type: String },
     description: { type: String },
-    image: { type: String },
-    prices: [priceSchema],
+    src: { type: String },
+    price: [{ type: String }],
+    weight: [{ type: String }],
     slug: { type: String, slug: "name", unique: true },
   },
   {
