@@ -1,5 +1,6 @@
 const express = require('express')
 const morgan = require('morgan')
+const cors = require('cors');
 const dotenv = require('dotenv').config();
 const handlebars = require('express-handlebars');
 const path = require('path')
@@ -11,25 +12,30 @@ const fishRoute = require("./src/routes/fish");
 const bodyParser = require('body-parser');
 const db = require('./src/config/db')
 
-app.use(function (req, res, next) {
-  // res.write('BÀI LAB ĐÃ HOÀN THÀNH')
-  // Website you wish to allow to connect
-  // res.setHeader('Access-Control-Allow-Origin', 'https://fish-sell.vercel.app');
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
-  // Request methods you wish to allow
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+// app.use(function (req, res, next) {
+//   // res.write('BÀI LAB ĐÃ HOÀN THÀNH')
+//   // Website you wish to allow to connect
+//   // res.setHeader('Access-Control-Allow-Origin', 'https://fish-sell.vercel.app');
+//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
+//   // Request methods you wish to allow
+//   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-  // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+//   // Request headers you wish to allow
+//   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader('Access-Control-Allow-Credentials', true);
+//   // Set to true if you need the website to include cookies in the requests sent
+//   // to the API (e.g. in case you use sessions)
+//   res.setHeader('Access-Control-Allow-Credentials', true);
 
-  // Pass to next layer of middleware
-  next();
-});
-
+//   // Pass to next layer of middleware
+//   next();
+// });
+app.use(cors({
+  origin: '*', 
+  methods: 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+  allowedHeaders: 'X-Requested-With,content-type',
+  credentials: true,
+}));
 db.connect();
 
 app.engine('handlebars', handlebars());
